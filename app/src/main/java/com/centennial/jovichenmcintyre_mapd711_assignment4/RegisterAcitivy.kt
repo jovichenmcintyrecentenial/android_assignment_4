@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.RegisterViewModel
 import java.util.*
 
 class RegisterAcitivy : AppCompatActivity() {
+
+    lateinit var registerViewModel: RegisterViewModel
 
     private lateinit var username: EditText
     private lateinit var  firstname: EditText
@@ -35,6 +39,7 @@ class RegisterAcitivy : AppCompatActivity() {
         password = findViewById(R.id.password1)
         rePassword = findViewById(R.id.password2)
 
+        registerViewModel = ViewModelProvider(this).get(modelClass = RegisterViewModel::class.java)
 
 
     }
@@ -58,7 +63,7 @@ class RegisterAcitivy : AppCompatActivity() {
         _isEmptyValidation(password,"Please enter a password")
         _isEmptyValidation(rePassword,"Please re-enter password")
 
-        if(rePassword != password){
+        if(rePassword.text.toString() != password.text.toString()){
             throw UserInputException("Password doesn't match, please try again.")
         }
 
@@ -84,7 +89,9 @@ class RegisterAcitivy : AppCompatActivity() {
                 var password = this.password.text.toString()
 
                 var customerModel = CustomerModel(username,firstname,lastname,address,city,postalCode,password)
-
+                registerViewModel.insertCustomerData(this,customerModel)
+                Toast.makeText(this,"Registration successful",Toast.LENGTH_LONG).show()
+                finish()
 //                val newIntent = Intent(this,ConfirmationCheckOutActivity::class.java)
 //                //serial checkout object save to intent
 //                newIntent.putExtra("checkout" , Gson().toJson(checkoutObj))
