@@ -110,6 +110,7 @@
         style="@style/button" />
     <Button
         android:layout_height="20dp"
+        android:onClick="onSubmit"
         android:layout_width="0dp"/>
 
 </LinearLayout>

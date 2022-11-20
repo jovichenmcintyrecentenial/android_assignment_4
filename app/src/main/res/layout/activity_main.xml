@@ -85,6 +85,7 @@
                 android:background="#03324FE1"
                 android:backgroundTint="#03324FE1"
                 android:layout_height="20dp"
+                android:onClick="register"
                 android:layout_width="match_parent"
               />
         </RelativeLayout>

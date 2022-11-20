@@ -9,9 +9,6 @@ data class CustomerModel(
     //defining a column orderId
     @ColumnInfo(name = "userName")
     var userName: String,
-    //defining a column password
-    @ColumnInfo(name = "password")
-    var password: String,
     //defining a column firstname
     @ColumnInfo(name = "firstname")
     var firstname: String,
@@ -23,6 +20,11 @@ data class CustomerModel(
     var address: String,
     @ColumnInfo(name = "city")
     var city: String,
+    @ColumnInfo(name = "postal")
+    var postal: String,
+    //defining a column password
+    @ColumnInfo(name = "password")
+    var password: String,
 )
 {
     //defining a primary key field Id
