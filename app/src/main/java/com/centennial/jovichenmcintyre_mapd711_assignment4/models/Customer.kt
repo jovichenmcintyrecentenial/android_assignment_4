@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Customer")
+@Entity(tableName = "customers")
 data class CustomerModel(
     //defining a column orderId
     @ColumnInfo(name = "userName")
@@ -23,8 +23,6 @@ data class CustomerModel(
     var address: String,
     @ColumnInfo(name = "city")
     var city: String,
-    @ColumnInfo(name = "address")
-    var postalCode: String
 )
 {
     //defining a primary key field Id

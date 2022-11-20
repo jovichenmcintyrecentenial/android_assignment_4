@@ -2,6 +2,7 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.database
 
 import android.content.Context
 import androidx.room.*
+import com.centennial.jovichenmcintyre_mapd711_assignment4.dao.PhoneStoreDao
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
@@ -10,7 +11,7 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
 @Database(entities = arrayOf(OrderModel::class,CustomerModel::class,ProductModel::class,), version = 1, exportSchema = false)
 abstract class PhoneStoreDatabase : RoomDatabase() {
     //instantiating DAO object
-    abstract fun initDao() : PhoneStoreDatabase
+    abstract fun phonestoreDao() : PhoneStoreDao
 
     //companion object means an object declaration inside a class
     companion object {
