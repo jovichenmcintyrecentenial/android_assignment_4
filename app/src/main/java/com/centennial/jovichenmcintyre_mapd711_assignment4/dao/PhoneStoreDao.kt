@@ -1,10 +1,7 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 @Dao
 interface PhoneStoreDao {
@@ -15,6 +12,9 @@ interface PhoneStoreDao {
 
     @Query("SELECT * FROM customers WHERE userName =:userName AND password =:password")
     fun passwordCheck(userName: String,password:String) : LiveData<CustomerModel?>
+
+    @Update
+    fun updateCustomer(customerModel:CustomerModel)
 //
 //    //defining a query method using @Query Annotation
 //    @Query("SELECT * FROM student WHERE StudentName =:studentname")

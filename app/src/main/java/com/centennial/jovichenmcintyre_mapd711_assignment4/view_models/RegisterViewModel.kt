@@ -14,5 +14,4 @@ class RegisterViewModel: ViewModel() {
             CustomerRepository.insertData(context, customerModel)
         }
     }
-
 }
