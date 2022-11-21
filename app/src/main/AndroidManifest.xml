@@ -16,17 +16,13 @@
             android:name=".BottomNavigationActivity"
             android:exported="true"
             android:label="@string/title_activity_bottom_navigation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterAcitivy"
+            android:name=".ui.register.RegisterAcitivy"
             android:exported="true"
             android:label="Register">
             <meta-data
@@ -34,9 +30,13 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"

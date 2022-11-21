@@ -1,4 +1,4 @@
-package com.centennial.jovichenmcintyre_mapd711_assignment4.view_models
+package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.login
 
 import android.content.Context
 import androidx.lifecycle.LiveData

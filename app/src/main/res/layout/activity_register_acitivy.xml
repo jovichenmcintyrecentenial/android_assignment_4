@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterAcitivy">
+    tools:context=".ui.register.RegisterAcitivy">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,7 @@
     android:layout_marginLeft="@dimen/page_margin"
     android:layout_marginRight="@dimen/page_margin"
     android:layout_marginTop="@dimen/page_margin"
-    tools:context=".RegisterAcitivy">
+    tools:context=".ui.register.RegisterAcitivy">
 
 
     <TextView

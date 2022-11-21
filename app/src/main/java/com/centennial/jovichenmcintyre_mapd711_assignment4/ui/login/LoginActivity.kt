@@ -1,4 +1,4 @@
-package com.centennial.jovichenmcintyre_mapd711_assignment4
+package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.login
 
 import android.content.Context
 import android.content.Intent
@@ -10,10 +10,12 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
+import com.centennial.jovichenmcintyre_mapd711_assignment4.BottomNavigationActivity
+import com.centennial.jovichenmcintyre_mapd711_assignment4.R
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.register.RegisterAcitivy
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.repository.ProductRepository
 import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils
-import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -39,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("username", customerModel.firstname)
                 editor.commit()
                 Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_LONG).show()
-
+                startActivity(Intent(this,BottomNavigationActivity::class.java))
             }
             else{
                 Toast.makeText(this,getString(R.string.invalid_pwd_or_username),Toast.LENGTH_LONG).show()
@@ -55,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun register(view: View) {
-        var intent = Intent(this,RegisterAcitivy::class.java)
+        var intent = Intent(this, RegisterAcitivy::class.java)
         startActivity(intent)
     }
 
