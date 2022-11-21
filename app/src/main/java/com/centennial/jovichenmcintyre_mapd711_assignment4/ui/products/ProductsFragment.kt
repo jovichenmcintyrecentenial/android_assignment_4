@@ -1,6 +1,7 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review.PhoneOptionsSelectActivity
+import com.google.gson.Gson
 
 class ProductsFragment : Fragment() {
 
@@ -32,24 +36,23 @@ class ProductsFragment : Fragment() {
         //find list view
         var listView = view.findViewById<ListView>(R.id.list)
 
-//        //create a listener for on click aciton on list view
-//        listView.setOnItemClickListener { parent, view, position, id ->
-//            var newIntent = Intent(this,PhoneOptionsSelectActivity::class.java)
-//            //update create PhoneCheckOut and serialize data and pass to intent
-//            newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(listOfPhones[position])))
-//            //load new Intent
-//            startActivity(newIntent)
-//        }
+        //create a listener for on click aciton on list view
+        listView.setOnItemClickListener { parent, view, position, id ->
+            var newIntent = Intent(activity, PhoneOptionsSelectActivity::class.java)
+            //update create PhoneCheckOut and serialize data and pass to intent
+            newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(productsViewModel.listOfProductLiveData.value!![position])))
+            //load new Intent
+            startActivity(newIntent)
+        }
 
         activity?.let { productsViewModel.listOfProductLiveData.observe(it, Observer { listOfPhones ->
             if(listOfPhones != null) {
-
                 //create instance of a custom listAdpator called PhoneListAdaptor
                 var listAdaptor = activity?.let { activity ->
                     PhoneListAdaptor(activity, listOfPhones)
                 }
 
-                //attact adaptor to listview
+                //attach adaptor to listview
                 listView.adapter = listAdaptor
             }
 
