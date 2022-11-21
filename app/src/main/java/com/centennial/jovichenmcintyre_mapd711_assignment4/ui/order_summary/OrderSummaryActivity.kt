@@ -1,18 +1,24 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary
 //Name: Jovi Chen-Mcintyre
 //ID: 301125059
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
 
 class OrderSummaryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
+
+        val orderViewModel = ViewModelProvider(this).get(modelClass = OrderViewModel::class.java)
+
 
         //update title
         supportActionBar?.title = getString(R.string.order_summary)
@@ -53,6 +59,22 @@ class OrderSummaryActivity : AppCompatActivity() {
         address.text = checkoutObj.address
         city.text = checkoutObj.city
         postalCode.text = checkoutObj.postalCode
+
+        val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
+
+
+        updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
+            if(it != null){
+                val unixTime = System.currentTimeMillis() / 1000L
+                var order = OrderModel(it.id!!, checkoutObj.phone.id!!, "Ordered",unixTime)
+                orderViewModel.addOrder(this,order)
+            }
+        })
+
+        updateViewModel.getCustomer(this)
+
+
+//        orderViewModel.addOrder(this,)
         
     }
 }
