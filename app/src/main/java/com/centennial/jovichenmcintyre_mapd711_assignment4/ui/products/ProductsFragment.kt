@@ -1,6 +1,7 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,7 +33,10 @@ class ProductsFragment : Fragment() {
 
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
+        val sharedPreference =  this.requireContext().getSharedPreferences("STORE", Context.MODE_PRIVATE)
+        var username = sharedPreference.getString("username","")
+        val welcome: TextView = view.findViewById(R.id.welcome)
+        welcome.text = "Welcome $username"
         //find list view
         var listView = view.findViewById<ListView>(R.id.list)
 

@@ -35,13 +35,17 @@ class LoginActivity : AppCompatActivity() {
         val loginObserver = Observer<CustomerModel?> { customerModel ->
 
             if(customerModel != null) {
-                val sharedPref = getPreferences(Context.MODE_PRIVATE)
+                val sharedPreference =  getSharedPreferences("STORE",Context.MODE_PRIVATE)
 
-                var editor = sharedPref.edit()
+                var editor = sharedPreference.edit()
                 editor.putString("username", customerModel.firstname)
-                editor.commit()
+                editor.apply()
+
                 Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_LONG).show()
-                startActivity(Intent(this,BottomNavigationActivity::class.java))
+                var intent = Intent(this,BottomNavigationActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+
             }
             else{
                 Toast.makeText(this,getString(R.string.invalid_pwd_or_username),Toast.LENGTH_LONG).show()

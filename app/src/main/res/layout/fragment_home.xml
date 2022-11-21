@@ -10,6 +10,14 @@
     android:layout_marginRight="@dimen/page_margin2"
     >
 
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/main_instructions"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"/>
+
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"

@@ -20,7 +20,7 @@ class UpdateCustumerViewModel: ViewModel() {
             liveCustomerData.value = CustomerRepository.loginCustomer.value
         }
         else{
-            val sharedPreference =  context.getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+            val sharedPreference =  context.getSharedPreferences("STORE",Context.MODE_PRIVATE)
             var username = sharedPreference.getString("username","")
             if(username != null){
                 CoroutineScope(Dispatchers.IO).launch {
