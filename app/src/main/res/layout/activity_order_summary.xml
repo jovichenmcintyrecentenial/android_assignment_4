@@ -215,6 +215,14 @@
 
 
             </TableLayout>
+            <Button
+                android:id="@+id/login"
+                android:text="Home"
+                android:onClick="onComplete"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                style="@style/button" />
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

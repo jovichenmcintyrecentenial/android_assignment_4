@@ -79,10 +79,6 @@ class RegisterAcitivy : AppCompatActivity() {
                 registerViewModel.insertCustomerData(this,customerModel)
                 Toast.makeText(this,"Registration successful",Toast.LENGTH_LONG).show()
                 finish()
-//                val newIntent = Intent(this,ConfirmationCheckOutActivity::class.java)
-//                //serial checkout object save to intent
-//                newIntent.putExtra("checkout" , Gson().toJson(checkoutObj))
-//                startActivity(newIntent)
 
             }
         }

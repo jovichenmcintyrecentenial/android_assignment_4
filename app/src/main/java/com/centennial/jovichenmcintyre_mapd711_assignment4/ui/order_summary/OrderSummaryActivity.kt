@@ -1,11 +1,14 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary
 //Name: Jovi Chen-Mcintyre
 //ID: 301125059
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.centennial.jovichenmcintyre_mapd711_assignment4.BottomNavigationActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
@@ -76,5 +79,12 @@ class OrderSummaryActivity : AppCompatActivity() {
 
 //        orderViewModel.addOrder(this,)
         
+    }
+
+    fun onComplete(view: View) {
+
+        var intent = Intent(this, BottomNavigationActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }
