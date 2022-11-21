@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:weightSum="1"
+    android:paddingLeft="@dimen/page_margin2"
+    android:paddingRight="@dimen/page_margin2"
+    android:layout_height="80dp">
+
+    <ImageView
+        android:id="@+id/phone_image"
+        android:layout_width="@dimen/page_margins"
+        android:layout_height="@dimen/page_margins"
+        android:layout_marginRight="@dimen/image_margin"
+        app:srcCompat="@drawable/ic_logo" />
+
+    <TextView
+        android:id="@+id/phone_name"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:text="Samsung Galaxy S22 Ultra 5G" />
+    <TextView
+        android:id="@+id/phone_price"
+        android:textColor="#37683A"
+        android:layout_width="wrap_content"
+        android:textSize="17sp"
+        android:layout_height="wrap_content"
+        android:text="$152.25" />
+</LinearLayout>

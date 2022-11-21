@@ -33,7 +33,7 @@ class ProductRepository {
             CoroutineScope(Dispatchers.IO).launch {
                 var list = phoneStoreDatabase!!.
                 phonestoreDao().
-                getProduct("Oppo", "oppo_reno8_pro")
+                getProduct("Oppo", context.getString(R.string.oppo_reno8))
                 if(list == null){
                     val productModels = ArrayList<ProductModel>()
                     productModels.add(ProductModel(context.getString(R.string.oppo_reno8),756.81,"oppo_reno8_pro","Oppo", "Blue","128 GB"))
@@ -64,18 +64,17 @@ class ProductRepository {
             return PhoneStoreDatabase.getDatabaseClient(context)
         }
 
-        fun getAllProducts(context: Context, customer:CustomerModel) {
+        fun getAllProducts(context: Context):List<ProductModel>? {
 
             phoneStoreDatabase = getDB(context)
 
-            CoroutineScope(Dispatchers.IO).launch {
-                listOfPhones.postValue(phoneStoreDatabase!!.phonestoreDao().getAllProducts())
-            }
+            var listOfProducts = phoneStoreDatabase!!.phonestoreDao().getAllProducts()
+
+            listOfPhones.postValue(listOfProducts)
+
+            return listOfProducts
 
         }
-
-
-
 
         fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
             phoneStoreDatabase = getDB(context)

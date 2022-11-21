@@ -8,7 +8,7 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
 
 //Room database
-@Database(entities = arrayOf(OrderModel::class,CustomerModel::class,ProductModel::class,), version = 3, exportSchema = false)
+@Database(entities = arrayOf(OrderModel::class,CustomerModel::class,ProductModel::class,), version = 4, exportSchema = false)
 abstract class PhoneStoreDatabase : RoomDatabase() {
     //instantiating DAO object
     abstract fun phonestoreDao() : PhoneStoreDao

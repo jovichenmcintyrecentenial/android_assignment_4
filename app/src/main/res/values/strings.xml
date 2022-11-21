@@ -36,7 +36,10 @@
     <string name="_256_gb">256 GB</string>
     <string name="_512_gb">512 GB</string>
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Products</string>
     <string name="title_dashboard">Orders</string>
     <string name="title_notifications">Profile</string>
+    <string name="choose_handset_model">Choose handset model</string>
+    <string name="select_your_phone_specification_by_selecting_options_below">Select your phone specification by selecting options below</string>
+
 </resources>

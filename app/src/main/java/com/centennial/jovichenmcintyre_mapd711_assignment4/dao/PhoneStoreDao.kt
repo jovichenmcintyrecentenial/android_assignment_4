@@ -26,7 +26,7 @@ interface PhoneStoreDao {
     fun insertProducts(productModel: ProductModel)
 
     @Query("SELECT * FROM products")
-    fun getAllProducts() : List<ProductModel>
+    fun getAllProducts() : List<ProductModel>?
 
     @Query("SELECT * FROM products WHERE phoneMake =:phoneMake AND phoneModel =:phoneModel")
     fun getProduct (phoneMake:String, phoneModel:String) : ProductModel?
