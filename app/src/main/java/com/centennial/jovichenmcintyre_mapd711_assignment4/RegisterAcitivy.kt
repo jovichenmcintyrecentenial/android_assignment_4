@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils
 import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.RegisterViewModel
 import java.util.*
 
@@ -44,24 +45,16 @@ class RegisterAcitivy : AppCompatActivity() {
 
     }
 
-     private fun _isEmptyValidation(edittext:EditText,error:String):Boolean {
-         if(edittext.text.trim().isEmpty()) {
-             throw UserInputException(error)
-         }
-         return  false
-    }
-
-
     //validate edit text information if there is an issue throw an exception
     private fun isDataValid(): Boolean {
-        _isEmptyValidation(username,"Please enter a username")
-        _isEmptyValidation(firstname,"Please enter a firstname")
-        _isEmptyValidation(lastname,"Please enter a lastname")
-        _isEmptyValidation(address,"Please enter a address")
-        _isEmptyValidation(city,"Please enter a city")
-        _isEmptyValidation(postalCode,"Please enter a postalCode")
-        _isEmptyValidation(password,"Please enter a password")
-        _isEmptyValidation(rePassword,"Please re-enter password")
+        Utils._isEmptyValidation(username,"Please enter a username")
+        Utils._isEmptyValidation(firstname,"Please enter a firstname")
+        Utils._isEmptyValidation(lastname,"Please enter a lastname")
+        Utils._isEmptyValidation(address,"Please enter a address")
+        Utils._isEmptyValidation(city,"Please enter a city")
+        Utils._isEmptyValidation(postalCode,"Please enter a postalCode")
+        Utils._isEmptyValidation(password,"Please enter a password")
+        Utils._isEmptyValidation(rePassword,"Please re-enter password")
 
         if(rePassword.text.toString() != password.text.toString()){
             throw UserInputException("Password doesn't match, please try again.")
@@ -70,25 +63,21 @@ class RegisterAcitivy : AppCompatActivity() {
         return true
     }
 
-    //use to display toast messages
-    private fun showMessage(message:String){
-        Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
-    }
 
 
     fun onSubmit(view: View) {
         try{
             if(isDataValid()){
 
-                var username = this.username.text.toString()
-                var firstname = this.firstname.text.toString()
-                var lastname = this.lastname.text.toString()
-                var address = this.address.text.toString()
-                var city = this.city.text.toString()
-                var postalCode = this.postalCode.text.toString()
-                var password = this.password.text.toString()
+                val username = this.username.text.toString()
+                val firstname = this.firstname.text.toString()
+                val lastname = this.lastname.text.toString()
+                val address = this.address.text.toString()
+                val city = this.city.text.toString()
+                val postalCode = this.postalCode.text.toString()
+                val password = this.password.text.toString()
 
-                var customerModel = CustomerModel(username,firstname,lastname,address,city,postalCode,password)
+                val customerModel = CustomerModel(username,firstname,lastname,address,city,postalCode,password)
                 registerViewModel.insertCustomerData(this,customerModel)
                 Toast.makeText(this,"Registration successful",Toast.LENGTH_LONG).show()
                 finish()
@@ -102,7 +91,7 @@ class RegisterAcitivy : AppCompatActivity() {
         //catch  and display user input exception
         catch (e: UserInputException) {
             //display exception message
-            showMessage(e.message.toString())
+            Utils.showMessage(this,e.message.toString())
         }
     }
 
