@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +36,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         val cardType = findViewById<TextView>(R.id.card_type)
         val last4Digits = findViewById<TextView>(R.id.last_4_digits)
         val price = findViewById<TextView>(R.id.price)
+
         
         val userName = findViewById<TextView>(R.id.user_name)
         val address = findViewById<TextView>(R.id.address)
@@ -53,9 +55,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         modelName.text = checkoutObj.phone.phoneModel
         phoneColor.text = checkoutObj.phone.phoneColor
         internalStorage.text = checkoutObj.phone.storageCapacity
-        cardType.text = checkoutObj.cardType.toString()
-        //show last 4 digits
-        last4Digits.text = checkoutObj.cardNumber?.substring(12)
+
         price.text = checkoutObj.phone.getFormatterPrice()
         //populate views
         userName.text = checkoutObj.firstName+" "+checkoutObj.lastName
@@ -65,16 +65,28 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
+        if(!checkoutObj.isOrderDetail){
+            findViewById<TableRow>(R.id.last_4_digits_row).visibility = View.GONE
+            findViewById<TableRow>(R.id.card_type_row).visibility = View.GONE
 
-        updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
-            if(it != null){
-                val unixTime = System.currentTimeMillis() / 1000L
-                var order = OrderModel(it.id!!, checkoutObj.phone.id!!, "Ordered",unixTime)
-                orderViewModel.addOrder(this,order)
-            }
-        })
+            val titleTextView = findViewById<TextView>(R.id.title)
+            titleTextView.text = "Order Details"
+        }
+        else{
 
-        updateViewModel.getCustomer(this)
+            cardType.text = checkoutObj.cardType.toString()
+            last4Digits.text = checkoutObj.cardNumber?.substring(12)
+
+            updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
+                if(it != null){
+                    val unixTime = System.currentTimeMillis() / 1000L
+                    var order = OrderModel(it.id!!, checkoutObj.phone.id!!, "Ordered",unixTime)
+                    orderViewModel.addOrder(this,order)
+                }
+            })
+            updateViewModel.getCustomer(this)
+        }
+
 
 
 //        orderViewModel.addOrder(this,)

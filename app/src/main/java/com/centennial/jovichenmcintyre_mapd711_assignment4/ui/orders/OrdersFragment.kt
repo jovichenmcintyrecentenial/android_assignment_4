@@ -1,6 +1,7 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.orders
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductOrder
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.checkout.CheckOutActivity
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review.ProductReviewActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products.ProductsFragment
+import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
 
@@ -40,7 +46,7 @@ class OrdersFragment : Fragment() {
                     if(listOfOrders != null){
 
                         var listAdaptor = activity?.let { activity ->
-                            OrdersFragment.OrderListAdaptor(activity, listOfOrders, customerModel)
+                            OrderListAdaptor(activity, listOfOrders, customerModel)
                         }
 
                         //attach adaptor to listview
@@ -53,6 +59,26 @@ class OrdersFragment : Fragment() {
 
         })
         context?.let { ordersViewModel.getCustomer(it) }
+        //create a listener for on click aciton on list view
+        listView.setOnItemClickListener { parent, view, position, id ->
+            var newIntent = Intent(activity, OrderSummaryActivity::class.java)
+            var productOrder = ordersViewModel.listOfOrdersLiveData.value!![position]
+            var customerModel = ordersViewModel.liveCustomerData.value!!
+
+            var checkoutObj = PhoneCheckOut(productOrder.productModel!!)
+
+            checkoutObj.address = customerModel.address
+            checkoutObj.city = customerModel.city
+            checkoutObj.postalCode = customerModel.postal
+
+            checkoutObj.firstName = customerModel.firstname
+            checkoutObj.lastName = customerModel.lastname
+
+            //update create PhoneCheckOut and serialize data and pass to intent
+            newIntent.putExtra("checkout", Gson().toJson(checkoutObj))
+            //load new Intent
+            startActivity(newIntent)
+        }
         return view
     }
 

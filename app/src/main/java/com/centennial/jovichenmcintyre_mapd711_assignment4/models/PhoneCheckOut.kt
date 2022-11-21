@@ -20,5 +20,6 @@ class PhoneCheckOut (phone:ProductModel) {
     var expirationMonth : String? = null
     var expirationYear : String? = null
     var type :String? = null
+    var isOrderDetail = false
 
 }

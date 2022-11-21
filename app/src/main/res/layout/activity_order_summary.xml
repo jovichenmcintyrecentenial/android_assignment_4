@@ -16,6 +16,7 @@
             tools:context=".ConfirmationCheckOutActivity">
 
             <TextView
+                android:id="@+id/title"
                 style="@style/main_instructions"
                 android:text="@string/order_successful" />
 
@@ -101,7 +102,7 @@
                         android:text="64 GB" />
                 </TableRow>
 
-                <TableRow android:layout_marginBottom="5dp">
+                <TableRow android:id="@+id/card_type_row" android:layout_marginBottom="5dp">
 
                     <TextView
                         style="@style/data_label"
@@ -114,7 +115,7 @@
                         android:text="Debit" />
                 </TableRow>
 
-                <TableRow android:layout_marginBottom="5dp">
+                <TableRow android:id="@+id/last_4_digits_row" android:layout_marginBottom="5dp">
 
                     <TextView
                         style="@style/data_label"
