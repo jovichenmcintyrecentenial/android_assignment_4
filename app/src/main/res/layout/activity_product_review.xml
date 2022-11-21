@@ -76,7 +76,6 @@
             android:id="@+id/opt_64GB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onSelectRadioButton"
             android:text="@string/_64_gb" />
 
     </RadioGroup>
