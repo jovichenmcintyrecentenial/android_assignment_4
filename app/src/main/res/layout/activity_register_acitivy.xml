@@ -17,17 +17,7 @@
     tools:context=".ui.register.RegisterAcitivy">
 
 
-    <TextView
-        android:id="@+id/uname_label"
-        style="@style/checkout_text_view_style"
-        android:text="@string/username" />
 
-    <EditText
-        android:id="@+id/uname"
-        style="@style/edit_text"
-        android:autofillHints=""
-        android:hint="@string/enter_username_here"
-        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/fname_label"
@@ -51,7 +41,17 @@
         android:autofillHints=""
         android:hint="@string/enter_lastname_here"
         android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/uname_label"
+        style="@style/checkout_text_view_style"
+        android:text="Email" />
 
+    <EditText
+        android:id="@+id/uname"
+        style="@style/edit_text"
+        android:autofillHints=""
+        android:hint="@string/enter_username_here"
+        android:inputType="textPersonName" />
     <TextView
         style="@style/checkout_text_view_style"
         android:text="@string/address" />

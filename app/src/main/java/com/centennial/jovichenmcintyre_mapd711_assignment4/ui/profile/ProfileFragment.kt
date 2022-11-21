@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
         updateViewModel.liveCustomerData.observe(viewLifecycleOwner, Observer {
 
             if(it != null) {
-                username.text = "@${it.userName}"
+                username.text = "${it.email}"
                 name.text = "${it.firstname} ${it.lastname}"
             }
 

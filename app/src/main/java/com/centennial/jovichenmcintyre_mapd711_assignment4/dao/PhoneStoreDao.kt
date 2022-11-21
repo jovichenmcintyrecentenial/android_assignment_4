@@ -13,10 +13,10 @@ interface PhoneStoreDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCustomer(studentModel: CustomerModel)
 
-    @Query("SELECT * FROM customers WHERE userName =:userName AND password =:password")
+    @Query("SELECT * FROM customers WHERE email =:userName AND password =:password")
     fun passwordCheck(userName: String,password:String) : CustomerModel?
 
-    @Query("SELECT * FROM customers WHERE userName =:userName")
+    @Query("SELECT * FROM customers WHERE email =:userName")
     fun getCustomer(userName: String) : CustomerModel?
 
     @Update
@@ -32,6 +32,9 @@ interface PhoneStoreDao {
 
     @Query("SELECT * FROM products")
     fun getAllProducts() : List<ProductModel>?
+
+    @Query("SELECT * FROM orders WHERE custId =:id")
+    fun getMyOrders (id:Int) : List<OrderModel>?
 
     @Query("SELECT * FROM products WHERE phoneMake =:phoneMake AND phoneModel =:phoneModel")
     fun getProduct (phoneMake:String, phoneModel:String) : ProductModel?

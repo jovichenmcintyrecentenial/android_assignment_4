@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "order")
+@Entity(tableName = "orders")
 data class OrderModel(
     //defining a column custId
     @ColumnInfo(name = "custId")

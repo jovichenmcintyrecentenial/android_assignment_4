@@ -11,9 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
-import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
-import com.centennial.jovichenmcintyre_mapd711_assignment4.repository.CustomerRepository
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.register.RegisterViewModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils
 
 class UpdateCustomerActivity : AppCompatActivity() {
@@ -58,7 +55,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
         updateViewModel.liveCustomerData.observe(this, Observer {
 
             if(it != null) {
-                username.setText(it.userName)
+                username.setText(it.email)
                 city.setText(it.city)
                 address.setText(it.address)
                 postalCode.setText(it.postal)

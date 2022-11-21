@@ -27,13 +27,13 @@
 
     <TextView
         style="@style/checkout_text_view_style"
-        android:text="Username" />
+        android:text="Email" />
 
     <EditText
         android:id="@+id/uname"
         style="@style/edit_text"
         android:autofillHints=""
-        android:hint="Enter username here"
+        android:hint="Enter email here"
         android:inputType="textPersonName" />
 
     <TextView

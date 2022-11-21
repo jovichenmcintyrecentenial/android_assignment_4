@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "customers")
 data class CustomerModel(
     //defining a column orderId
-    @ColumnInfo(name = "userName")
-    var userName: String,
+    @ColumnInfo(name = "email")
+    var email: String,
     //defining a column firstname
     @ColumnInfo(name = "firstname")
     var firstname: String,

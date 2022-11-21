@@ -3,6 +3,8 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.repository
 import android.content.Context
 import com.centennial.jovichenmcintyre_mapd711_assignment4.database.PhoneStoreDatabase
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.repository.OrderRepository.Companion.phoneStoreDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +28,15 @@ class OrderRepository {
             }
 
         }
+
+        fun getMyOrders(context: Context, id: Int): List<OrderModel>? {
+
+            phoneStoreDatabase = getDB(context)
+
+            return phoneStoreDatabase!!.phonestoreDao().getMyOrders(id)
+
+        }
+
 
     }
 }
