@@ -1,12 +1,14 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review
 //Name: Jovi Chen-Mcintyre
 //ID: 301125059
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.checkout.CheckOutActivity
 import com.google.gson.Gson
 
 class ProductReviewActivity : AppCompatActivity() {
@@ -74,14 +76,11 @@ class ProductReviewActivity : AppCompatActivity() {
 
     fun onSubmit(view: View) {
         //create new intent to CheckOutActivity
-//        var newIntent = Intent(this,CheckOutActivity::class.java )
-//
-//        //update checkoutObj to store select color and internal storage size
-//        checkoutObj.color = selectColorPhone
-//        checkoutObj.internalStorageSize = selectInternalStorage
-//        //serialize checkoutObj and save to intent
-//        newIntent.putExtra("checkout",Gson().toJson(checkoutObj))
-//        //start intent
-//        startActivity(newIntent)
+        var newIntent = Intent(this, CheckOutActivity::class.java )
+
+        //serialize checkoutObj and save to intent
+        newIntent.putExtra("checkout",Gson().toJson(checkoutObj))
+        //start intent
+        startActivity(newIntent)
     }
 }
