@@ -16,4 +16,23 @@
     <string name="postal_code">Postal Code</string>
     <string name="enter_postal_code_here">Enter postal code here</string>
     <string name="register">Register</string>
+    <string name="login_success">Login Successful</string>
+    <string name="invalid_pwd_or_username">Invalid, username or password.</string>
+    <string name="oppo_reno8">Reno8 Pro</string>
+    <string name="oppo_A77s">A77s</string>
+    <string name="oppo_reno7_5G">Reno7 5G</string>
+    <string name="google_pixel_7_pro">Pixel 7 Pro</string>
+    <string name="google_pixel_6_pro">Pixel 6 Pro</string>
+    <string name="google_pixel_5_pro">Pixel 5 Pro</string>
+    <string name="samung_s22_ultra_5G">Galaxy S22 Ultra 5G</string>
+    <string name="samung_galaxy_a53_5g">Galaxy A53 5G</string>
+    <string name="samung_galaxy_a13">Galaxy A13</string>
+    <string name="iphone_14_pro_max">iPhone 14 Pro Max</string>
+    <string name="iphone_13_pro_max">iPhone 13 Pro Max</string>
+    <string name="iphone_12_pro_max">iPhone 12 Pro Max</string>
+    <string name="select_a_color">Select a color</string>
+    <string name="_64_gb">64 GB</string>
+    <string name="_128_gb">128 GB</string>
+    <string name="_256_gb">256 GB</string>
+    <string name="_512_gb">512 GB</string>
 </resources>

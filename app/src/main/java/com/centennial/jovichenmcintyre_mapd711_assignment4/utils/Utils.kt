@@ -7,7 +7,7 @@ import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserIn
 
 class Utils {
     companion object {
-        fun _isEmptyValidation(edittext: EditText, error: String): Boolean {
+        fun emptyValidation(edittext: EditText, error: String): Boolean {
             if (edittext.text.trim().isEmpty()) {
                 throw UserInputException(error)
             }

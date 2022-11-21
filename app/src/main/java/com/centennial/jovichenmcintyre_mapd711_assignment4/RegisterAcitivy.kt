@@ -1,6 +1,5 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,7 +10,6 @@ import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserIn
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils
 import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.RegisterViewModel
-import java.util.*
 
 class RegisterAcitivy : AppCompatActivity() {
 
@@ -47,14 +45,14 @@ class RegisterAcitivy : AppCompatActivity() {
 
     //validate edit text information if there is an issue throw an exception
     private fun isDataValid(): Boolean {
-        Utils._isEmptyValidation(username,"Please enter a username")
-        Utils._isEmptyValidation(firstname,"Please enter a firstname")
-        Utils._isEmptyValidation(lastname,"Please enter a lastname")
-        Utils._isEmptyValidation(address,"Please enter a address")
-        Utils._isEmptyValidation(city,"Please enter a city")
-        Utils._isEmptyValidation(postalCode,"Please enter a postalCode")
-        Utils._isEmptyValidation(password,"Please enter a password")
-        Utils._isEmptyValidation(rePassword,"Please re-enter password")
+        Utils.emptyValidation(username,"Please enter a username")
+        Utils.emptyValidation(firstname,"Please enter a firstname")
+        Utils.emptyValidation(lastname,"Please enter a lastname")
+        Utils.emptyValidation(address,"Please enter a address")
+        Utils.emptyValidation(city,"Please enter a city")
+        Utils.emptyValidation(postalCode,"Please enter a postalCode")
+        Utils.emptyValidation(password,"Please enter a password")
+        Utils.emptyValidation(rePassword,"Please re-enter password")
 
         if(rePassword.text.toString() != password.text.toString()){
             throw UserInputException("Password doesn't match, please try again.")

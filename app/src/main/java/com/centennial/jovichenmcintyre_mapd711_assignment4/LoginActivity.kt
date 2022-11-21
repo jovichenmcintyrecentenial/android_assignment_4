@@ -11,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.repository.ProductRepository
 import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils
 import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.LoginViewModel
-import com.centennial.jovichenmcintyre_mapd711_assignment4.view_models.RegisterViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,7 +25,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         loginViewModel = ViewModelProvider(this).get(modelClass = LoginViewModel::class.java)
 
         usernameEditText = findViewById(R.id.uname)
@@ -39,15 +38,18 @@ class LoginActivity : AppCompatActivity() {
                 var editor = sharedPref.edit()
                 editor.putString("username", customerModel.firstname)
                 editor.commit()
-                Toast.makeText(this,"Login Successful",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_LONG).show()
 
             }
             else{
-                Toast.makeText(this,"Invalid, username or password.",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.invalid_pwd_or_username),Toast.LENGTH_LONG).show()
             }
         }
 
         loginViewModel.liveCustomerData.observe(this, loginObserver)
+
+        ProductRepository.initialProductData(this)
+
 
 
     }
@@ -76,8 +78,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun isDataValid(): Boolean {
 
-        Utils._isEmptyValidation(usernameEditText, "Enter a username")
-        Utils._isEmptyValidation(passwordEditText, "Enter a password")
+        Utils.emptyValidation(usernameEditText, "Enter a username")
+        Utils.emptyValidation(passwordEditText, "Enter a password")
 
         return true
     }
