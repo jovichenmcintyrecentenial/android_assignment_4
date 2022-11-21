@@ -51,6 +51,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
         firstname.visibility = View.GONE
         lastname.visibility = View.GONE
 
+        button.text = "Update"
 
         updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
