@@ -33,6 +33,25 @@ class CustomerRepository {
 
         }
 
+        fun getData(context: Context, username:String):CustomerModel? {
+            phoneStoreDatabase = getDB(context)
+
+            var customer = phoneStoreDatabase!!.phonestoreDao().getCustomer(username)
+            loginCustomer.postValue(customer)
+
+            return customer
+        }
+
+        fun update(context: Context, customer:CustomerModel) {
+            phoneStoreDatabase = getDB(context)
+
+            CoroutineScope(Dispatchers.IO).launch {
+
+                phoneStoreDatabase!!.phonestoreDao().updateCustomer(customer)
+            }
+
+        }
+
         fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
             phoneStoreDatabase = getDB(context)
 

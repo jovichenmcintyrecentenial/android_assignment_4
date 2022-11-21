@@ -78,7 +78,7 @@
                 android:linksClickable="false"
                 android:selectAllOnFocus="false"
                 android:text="@string/sign_up_text"
-                android:textColor="#324FE1"
+                android:textColor="#328C28"
                 android:textSize="17sp" />
 
             <Button

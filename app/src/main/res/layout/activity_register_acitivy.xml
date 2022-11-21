@@ -18,6 +18,7 @@
 
 
     <TextView
+        android:id="@+id/uname_label"
         style="@style/checkout_text_view_style"
         android:text="@string/username" />
 
@@ -29,6 +30,7 @@
         android:inputType="textPersonName" />
 
     <TextView
+        android:id="@+id/fname_label"
         style="@style/checkout_text_view_style"
         android:text="@string/firstname" />
 
@@ -39,6 +41,7 @@
         android:hint="@string/enter_firstname_here"
         android:inputType="textPersonName" />
     <TextView
+        android:id="@+id/lname_label"
         style="@style/checkout_text_view_style"
         android:text="@string/lastname" />
 
@@ -80,6 +83,7 @@
         android:hint="@string/enter_postal_code_here"
         android:inputType="textPersonName" />
     <TextView
+        android:id="@+id/password1_label"
         style="@style/checkout_text_view_style"
         android:text="Password" />
 
@@ -92,6 +96,7 @@
         />
 
     <TextView
+        android:id="@+id/password2_label"
         style="@style/checkout_text_view_style"
         android:text="Re-enter password" />
 

@@ -15,6 +15,9 @@ interface PhoneStoreDao {
     @Query("SELECT * FROM customers WHERE userName =:userName AND password =:password")
     fun passwordCheck(userName: String,password:String) : CustomerModel?
 
+    @Query("SELECT * FROM customers WHERE userName =:userName")
+    fun getCustomer(userName: String) : CustomerModel?
+
     @Update
     fun updateCustomer(customerModel:CustomerModel)
 
