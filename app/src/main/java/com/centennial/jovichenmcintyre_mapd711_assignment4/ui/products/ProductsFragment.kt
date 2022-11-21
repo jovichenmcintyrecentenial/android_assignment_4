@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review.PhoneOptionsSelectActivity
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review.ProductReviewActivity
 import com.google.gson.Gson
 
 class ProductsFragment : Fragment() {
@@ -38,7 +38,7 @@ class ProductsFragment : Fragment() {
 
         //create a listener for on click aciton on list view
         listView.setOnItemClickListener { parent, view, position, id ->
-            var newIntent = Intent(activity, PhoneOptionsSelectActivity::class.java)
+            var newIntent = Intent(activity, ProductReviewActivity::class.java)
             //update create PhoneCheckOut and serialize data and pass to intent
             newIntent.putExtra("checkout", Gson().toJson(PhoneCheckOut(productsViewModel.listOfProductLiveData.value!![position])))
             //load new Intent

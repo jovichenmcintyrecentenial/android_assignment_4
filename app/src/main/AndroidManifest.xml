@@ -30,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.product_review.PhoneOptionsSelectActivity"
+            android:name=".ui.product_review.ProductReviewActivity"
             android:exported="true"
             android:label="Register">
             <meta-data

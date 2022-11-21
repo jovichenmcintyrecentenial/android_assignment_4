@@ -9,7 +9,7 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.google.gson.Gson
 
-class PhoneOptionsSelectActivity : AppCompatActivity() {
+class ProductReviewActivity : AppCompatActivity() {
 
     //declare views
     lateinit var  selectColorPhone:String
@@ -17,7 +17,7 @@ class PhoneOptionsSelectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_phone_options_select)
+        setContentView(R.layout.activity_product_review)
         //set title
         supportActionBar?.title = "Product Review"
 
