@@ -31,9 +31,9 @@ class UpdateCustumerViewModel: ViewModel() {
         }
     }
 
-    fun updateCustomer( context:Context,customerModel: CustomerModel) {
+    fun updateCustomer( context:Context) {
         CoroutineScope(Dispatchers.IO).launch {
-            CustomerRepository.update(context, customerModel)
+            CustomerRepository.update(context, liveCustomerData.value!!)
         }
     }
 }
