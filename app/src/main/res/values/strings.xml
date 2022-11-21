@@ -35,4 +35,8 @@
     <string name="_128_gb">128 GB</string>
     <string name="_256_gb">256 GB</string>
     <string name="_512_gb">512 GB</string>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Orders</string>
+    <string name="title_notifications">Profile</string>
 </resources>
