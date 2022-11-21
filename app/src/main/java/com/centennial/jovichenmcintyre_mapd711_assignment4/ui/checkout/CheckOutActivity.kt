@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.enumerators.CardType
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
 import java.util.*
@@ -151,10 +151,10 @@ class CheckOutActivity : AppCompatActivity() {
 
 
 
-//                val newIntent = Intent(this,ConfirmationCheckOutActivity::class.java)
-//                //serial checkout object save to intent
-//                newIntent.putExtra("checkout" , Gson().toJson(checkoutObj))
-//                startActivity(newIntent)
+                val newIntent = Intent(this, OrderSummaryActivity::class.java)
+                //serial checkout object save to intent
+                newIntent.putExtra("checkout" , Gson().toJson(checkoutObj))
+                startActivity(newIntent)
 
             }
         }

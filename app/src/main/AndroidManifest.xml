@@ -30,6 +30,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.order_summary.OrderSummaryActivity"
+            android:exported="true"
+            android:label="Checkout">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.checkout.CheckOutActivity"
             android:exported="true"
             android:label="Checkout">

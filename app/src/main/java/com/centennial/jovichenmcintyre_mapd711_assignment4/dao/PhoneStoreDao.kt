@@ -3,6 +3,7 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
 
 @Dao
@@ -24,6 +25,10 @@ interface PhoneStoreDao {
     //defining an insert method using @Insert Annotation
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProducts(productModel: ProductModel)
+
+    //defining an insert method using @Insert Annotation
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrder(orderModel: OrderModel)
 
     @Query("SELECT * FROM products")
     fun getAllProducts() : List<ProductModel>?

@@ -48,6 +48,7 @@
     <string name="cc_placeholder">**** **** **** ****</string>
     <string name="cvv_cvc">CVV/CVC</string>
     <string name="cvv_place_holder">***</string>
+    <string name="order_summary">Order Summary</string>
     <string name="expiry_date">Expiry date</string>
     <string name="mm">MM</string>
     <string name="yy">YY</string>
@@ -77,4 +78,22 @@
     <string name="empty_address">Please fill out the address field</string>
     <string name="empty_city">Please fill out the city field</string>
     <string name="empty_postal_code">Please fill out the postal code field</string>
+
+
+
+    <string name="come_for_the_phones_stay_for_the_price">Come for the phones, stay for the price</string>
+    <string name="choose_color">Choose color:</string>
+    <string name="choose_internal_storage">Choose internal storage:</string>
+    <string name="checkout">Checkout</string>
+
+    <string name="here_is_a_summary_of_your_order_and_delivery_details">Here is a summary of your order and delivery details</string>
+    <string name="company">Company</string>
+    <string name="model">Model</string>
+    <string name="color">Color</string>
+    <string name="internal_storage">Internal Storage</string>
+    <string name="card_last_4_digits">Card Last 4 Digits</string>
+    <string name="price">Price</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="name">Name</string>
+
 </resources>
