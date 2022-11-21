@@ -1,7 +1,6 @@
-package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.home
+package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
-import com.google.gson.Gson
 
-class HomeFragment : Fragment() {
+class ProductsFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -25,8 +23,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(modelClass = HomeViewModel::class.java)
+        val productsViewModel =
+            ViewModelProvider(this).get(modelClass = ProductsViewModel::class.java)
 
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -43,7 +41,7 @@ class HomeFragment : Fragment() {
 //            startActivity(newIntent)
 //        }
 
-        activity?.let { homeViewModel.listOfProductLiveData.observe(it, Observer { listOfPhones ->
+        activity?.let { productsViewModel.listOfProductLiveData.observe(it, Observer { listOfPhones ->
             if(listOfPhones != null) {
 
                 //create instance of a custom listAdpator called PhoneListAdaptor
@@ -58,7 +56,7 @@ class HomeFragment : Fragment() {
 
         }) }
 
-        activity?.let { homeViewModel.getProducts(it) }
+        activity?.let { productsViewModel.getProducts(it) }
 
 
         return view

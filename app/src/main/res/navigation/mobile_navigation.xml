@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.centennial.jovichenmcintyre_mapd711_assignment4.ui.home.HomeFragment"
+        android:name="com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products.ProductsFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 

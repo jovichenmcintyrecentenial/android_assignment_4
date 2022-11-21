@@ -11,11 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.home.HomeViewModel
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.register.RegisterAcitivy
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustomerActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
-import org.w3c.dom.Text
 
 class ProfileFragment : Fragment() {
 
