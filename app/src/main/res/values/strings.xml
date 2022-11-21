@@ -97,5 +97,6 @@
     <string name="name">Name</string>
     <string name="storage">Storage: </string>
     <string name="color_phone">Color: </string>
+    <string name="review_your_orders_here">Review your orders here</string>
 
 </resources>
