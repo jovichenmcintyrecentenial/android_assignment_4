@@ -11,7 +11,7 @@ interface PhoneStoreDao {
     fun insertCustomer(studentModel: CustomerModel)
 
     @Query("SELECT * FROM customers WHERE userName =:userName AND password =:password")
-    fun passwordCheck(userName: String,password:String) : LiveData<CustomerModel?>
+    fun passwordCheck(userName: String,password:String) : CustomerModel?
 
     @Update
     fun updateCustomer(customerModel:CustomerModel)

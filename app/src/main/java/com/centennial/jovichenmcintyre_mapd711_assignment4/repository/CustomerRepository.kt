@@ -2,6 +2,7 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.centennial.jovichenmcintyre_mapd711_assignment4.database.PhoneStoreDatabase
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +14,9 @@ class CustomerRepository {
     //defining database and live data object as companion objects
     companion object {
         private var phoneStoreDatabase: PhoneStoreDatabase? = null
-        private lateinit var customerModelLiveData: LiveData<CustomerModel?>
+        val loginCustomer: MutableLiveData<CustomerModel?> by lazy {
+            MutableLiveData<CustomerModel?>()
+        }
 
         //initialize database
         private fun getDB(context: Context) : PhoneStoreDatabase {
@@ -30,10 +33,13 @@ class CustomerRepository {
 
         }
 
-        fun passwordCheck(context: Context, username: String,password:String) : LiveData<CustomerModel?> {
+        fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
             phoneStoreDatabase = getDB(context)
-            customerModelLiveData = phoneStoreDatabase!!.phonestoreDao().passwordCheck(username, password)
-            return customerModelLiveData
+
+            var customer = phoneStoreDatabase!!.phonestoreDao().passwordCheck(username, password)
+            loginCustomer.postValue(customer)
+
+            return customer
         }
 
     }
