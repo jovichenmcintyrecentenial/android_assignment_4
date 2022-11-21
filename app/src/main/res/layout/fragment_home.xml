@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:layout_marginLeft="@dimen/page_margin2"
-    android:layout_marginRight="@dimen/page_margin2"
     >
 
     <TextView
+        android:paddingLeft="10dp"
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/main_instructions"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"/>
 
     <ListView

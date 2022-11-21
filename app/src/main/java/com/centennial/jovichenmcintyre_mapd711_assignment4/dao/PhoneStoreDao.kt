@@ -5,6 +5,7 @@ import androidx.room.*
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductModel
+import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductOrder
 
 @Dao
 interface PhoneStoreDao {
@@ -33,8 +34,8 @@ interface PhoneStoreDao {
     @Query("SELECT * FROM products")
     fun getAllProducts() : List<ProductModel>?
 
-    @Query("SELECT * FROM orders WHERE custId =:id")
-    fun getMyOrders (id:Int) : List<OrderModel>?
+    @Query("SELECT orders.*, products.* FROM orders INNER JOIN products ON products.productId = orders.prodId WHERE custId =:id")
+    fun getMyOrders (id:Int) : List<ProductOrder>?
 
     @Query("SELECT * FROM products WHERE phoneMake =:phoneMake AND phoneModel =:phoneModel")
     fun getProduct (phoneMake:String, phoneModel:String) : ProductModel?

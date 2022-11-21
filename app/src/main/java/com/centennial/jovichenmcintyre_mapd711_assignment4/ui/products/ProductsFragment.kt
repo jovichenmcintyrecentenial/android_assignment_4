@@ -104,7 +104,11 @@ class ProductsFragment : Fragment() {
             val priceTextView = inflatedView?.findViewById<TextView>(R.id.phone_price)
             val phoneImage = inflatedView?.findViewById<ImageView>(R.id.phone_image)
             val phoneNameTextView = inflatedView?.findViewById<TextView>(R.id.phone_name)
+            val storage = inflatedView?.findViewById<TextView>(R.id.storage)
+            val phoneColor = inflatedView?.findViewById<TextView>(R.id.phone_color)
 
+            storage!!.text = context.getString(R.string.storage)+" "+phone.storageCapacity
+            phoneColor!!.text = context.getString(R.string.color_phone)+phone.phoneColor
             //dynamically load phone images using phone uri
             val resourceImage: Int = context.resources.getIdentifier(phone.imageUri, "drawable", context.packageName)
             phoneImage?.setImageResource(resourceImage)

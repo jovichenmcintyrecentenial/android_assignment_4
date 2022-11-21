@@ -95,5 +95,7 @@
     <string name="price">Price</string>
     <string name="delivery_address">Delivery Address</string>
     <string name="name">Name</string>
+    <string name="storage">Storage: </string>
+    <string name="color_phone">Color: </string>
 
 </resources>

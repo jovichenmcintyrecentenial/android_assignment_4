@@ -10,7 +10,7 @@ data class OrderModel(
     @ColumnInfo(name = "custId")
     var custId: Int,
     //defining a column productId
-    @ColumnInfo(name = "productId")
+    @ColumnInfo(name = "prodId")
     var productId: Int,
     //defining a column status
     @ColumnInfo(name = "status")
