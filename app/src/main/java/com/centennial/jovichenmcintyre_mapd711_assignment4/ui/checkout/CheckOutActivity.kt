@@ -7,11 +7,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.enumerators.CardType
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
 import java.util.*
 
@@ -33,6 +36,8 @@ class CheckOutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check_out)
+
+
         //find views
         ccNumber = findViewById(R.id.cc_number)
          cvvNumber = findViewById(R.id.cvv_number)
@@ -47,6 +52,21 @@ class CheckOutActivity : AppCompatActivity() {
 
         //update title
         supportActionBar?.title = "Checkout"
+        val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
+
+
+        updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
+            if(it != null){
+                fname.setText(it.firstname)
+                lname.setText(it.lastname)
+                address.setText(it.address)
+                city.setText(it.city)
+                postalCode.setText(it.postal)
+            }
+        })
+
+        updateViewModel.getCustomer(this)
+
 
     }
 
