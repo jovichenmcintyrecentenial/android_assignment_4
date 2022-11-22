@@ -104,7 +104,7 @@ class OrderSummaryActivity : AppCompatActivity() {
     fun onComplete(view: View) {
         if(checkoutObj.isOrderDetail) {
             if(checkoutObj.orderModel != null) {
-                
+
                 checkoutObj.orderModel!!.status = "Cancelled"
 
                 orderViewModel.updateOrder(this, checkoutObj.orderModel!!)

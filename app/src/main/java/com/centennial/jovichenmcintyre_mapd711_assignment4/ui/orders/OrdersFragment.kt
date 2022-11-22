@@ -18,48 +18,68 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductOrder
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderViewModel
 import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
 
+    var ordersViewModel:OrdersViewModel? = null
+    var customerID: Int? = null
+    var list:MutableList<ProductOrder>? = null
 
+    override fun onResume() {
+        super.onResume()
+        if(ordersViewModel!=null){
+            context?.let { ordersViewModel!!.getOrders(it,customerID!!) }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val ordersViewModel =
-            ViewModelProvider(this).get(OrdersViewModel::class.java)
+
+        ordersViewModel =
+        ViewModelProvider(this).get(OrdersViewModel::class.java)
 
         var view = inflater.inflate(R.layout.fragment_dashboard, container, false)
         var listView = view.findViewById<ListView>(R.id.list)
 
-        ordersViewModel.liveCustomerData.observe(viewLifecycleOwner, Observer { customerModel ->
-
+        ordersViewModel!!.liveCustomerData.observe(viewLifecycleOwner, Observer { customerModel ->
+            customerID = customerModel!!.id
             if(customerModel != null){
-                ordersViewModel.listOfOrdersLiveData.observe(viewLifecycleOwner,Observer{ listOfOrders ->
+                ordersViewModel!!.listOfOrdersLiveData.observe(viewLifecycleOwner,Observer{ listOfOrders ->
                     if(listOfOrders != null){
 
                         var listAdaptor = activity?.let { activity ->
                             OrderListAdaptor(activity, listOfOrders, customerModel)
                         }
-
+                        if(list == null){
+                            list = listOfOrders as MutableList<ProductOrder>?
+                        }
                         //attach adaptor to listview
-                        listView.adapter = listAdaptor
+                        if(listView.adapter == null) {
+                            listView.adapter = listAdaptor
+                        }else{
+                            list!!.clear()
+                            list!!.addAll(listOfOrders)
+                            listView.invalidate()
+                            listView.invalidateViews()
+                        }
 
                     }
                 })
-                context?.let { ordersViewModel.getOrders(it,customerModel.id!!) }
+                context?.let { ordersViewModel!!.getOrders(it,customerModel.id!!) }
             }
 
         })
-        context?.let { ordersViewModel.getCustomer(it) }
+        context?.let { ordersViewModel!!.getCustomer(it) }
         //create a listener for on click aciton on list view
         listView.setOnItemClickListener { parent, view, position, id ->
             var newIntent = Intent(activity, OrderSummaryActivity::class.java)
-            var productOrder = ordersViewModel.listOfOrdersLiveData.value!![position]
-            var customerModel = ordersViewModel.liveCustomerData.value!!
+            var productOrder = ordersViewModel!!.listOfOrdersLiveData.value!![position]
+            var customerModel = ordersViewModel!!.liveCustomerData.value!!
 
             var checkoutObj = PhoneCheckOut(productOrder.productModel!!)
 
