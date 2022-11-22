@@ -2,7 +2,6 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.models
 //Name: Jovi Chen-Mcintyre
 //ID: 301125059
 import com.centennial.jovichenmcintyre_mapd711_001_assignment2.enumerators.CardType
-import java.util.*
 
 class PhoneCheckOut (phone:ProductModel) {
     var cardType: CardType? = null
@@ -21,5 +20,6 @@ class PhoneCheckOut (phone:ProductModel) {
     var expirationYear : String? = null
     var type :String? = null
     var isOrderDetail = false
+    var orderModel:OrderModel? = null
 
 }

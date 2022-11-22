@@ -57,12 +57,13 @@
         android:textSize="17sp"
         android:textStyle="bold"
         android:layout_height="wrap_content"
-        android:text="$152.25" />
+        android:text="$152222.25" />
 
         <LinearLayout
             android:background="@drawable/status_banner"
             android:orientation="vertical"
             android:layout_marginTop="5dp"
+            android:layout_gravity="right|center_vertical"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

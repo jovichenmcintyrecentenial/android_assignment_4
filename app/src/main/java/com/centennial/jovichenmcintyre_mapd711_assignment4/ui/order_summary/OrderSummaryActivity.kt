@@ -4,6 +4,7 @@ package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TableRow
 import android.widget.TextView
@@ -13,16 +14,21 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.BottomNavigationActiv
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
+import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.orders.OrdersViewModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
 
 class OrderSummaryActivity : AppCompatActivity() {
+
+    private lateinit var checkoutObj:PhoneCheckOut
+    private lateinit var orderViewModel:OrderViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
 
-        val orderViewModel = ViewModelProvider(this).get(modelClass = OrderViewModel::class.java)
-
+        orderViewModel = ViewModelProvider(this).get(modelClass = OrderViewModel::class.java)
 
         //update title
         supportActionBar?.title = getString(R.string.order_summary)
@@ -44,7 +50,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         val postalCode = findViewById<TextView>(R.id.postal_code)
 
         //deserialize data from intent
-        val checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"), PhoneCheckOut::class.java)
+        checkoutObj = Gson().fromJson(intent.getStringExtra("checkout"), PhoneCheckOut::class.java)
 
         //display phone image
         val resourceImage: Int = resources.getIdentifier(checkoutObj.phone.imageUri, "drawable", packageName)
@@ -65,12 +71,15 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
-        if(!checkoutObj.isOrderDetail){
+        if(checkoutObj.isOrderDetail){
             findViewById<TableRow>(R.id.last_4_digits_row).visibility = View.GONE
             findViewById<TableRow>(R.id.card_type_row).visibility = View.GONE
 
             val titleTextView = findViewById<TextView>(R.id.title)
             titleTextView.text = "Order Details"
+            supportActionBar?.title = "Order Details"
+            val button = findViewById<Button>(R.id.login)
+            button.text = "Cancel Order"
         }
         else{
 
@@ -89,14 +98,22 @@ class OrderSummaryActivity : AppCompatActivity() {
 
 
 
-//        orderViewModel.addOrder(this,)
         
     }
 
     fun onComplete(view: View) {
+        if(checkoutObj.isOrderDetail) {
+            if(checkoutObj.orderModel != null) {
+                
+                checkoutObj.orderModel!!.status = "Cancelled"
 
-        var intent = Intent(this, BottomNavigationActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+                orderViewModel.updateOrder(this, checkoutObj.orderModel!!)
+            }
+        }
+        else{
+            var intent = Intent(this, BottomNavigationActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
     }
 }

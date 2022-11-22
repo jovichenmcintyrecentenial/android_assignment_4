@@ -13,15 +13,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductOrder
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.checkout.CheckOutActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.product_review.ProductReviewActivity
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.products.ProductsFragment
 import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
@@ -73,6 +69,9 @@ class OrdersFragment : Fragment() {
 
             checkoutObj.firstName = customerModel.firstname
             checkoutObj.lastName = customerModel.lastname
+
+            checkoutObj.orderModel = productOrder.orderModel
+            checkoutObj.isOrderDetail = true
 
             //update create PhoneCheckOut and serialize data and pass to intent
             newIntent.putExtra("checkout", Gson().toJson(checkoutObj))

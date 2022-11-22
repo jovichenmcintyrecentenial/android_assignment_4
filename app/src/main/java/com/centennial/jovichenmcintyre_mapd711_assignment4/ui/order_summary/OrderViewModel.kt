@@ -14,4 +14,10 @@ class OrderViewModel: ViewModel() {
             OrderRepository.insertUpdateData(context, orderModel)
         }
     }
+
+    fun updateOrder( context:Context,orderModel: OrderModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            OrderRepository.insertUpdateData(context, orderModel)
+        }
+    }
 }
