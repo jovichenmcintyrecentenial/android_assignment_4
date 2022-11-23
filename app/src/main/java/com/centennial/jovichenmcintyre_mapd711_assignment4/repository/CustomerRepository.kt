@@ -24,7 +24,7 @@ class CustomerRepository {
         private fun getDB(context: Context) : PhoneStoreDatabase {
             return PhoneStoreDatabase.getDatabaseClient(context)
         }
-
+        //insert customer data
         fun insertData(context: Context, customer:CustomerModel) {
             phoneStoreDatabase = getDB(context)
 
@@ -35,6 +35,7 @@ class CustomerRepository {
 
         }
 
+        //get customer data based on username
         fun getData(context: Context, username:String):CustomerModel? {
             phoneStoreDatabase = getDB(context)
 
@@ -44,6 +45,7 @@ class CustomerRepository {
             return customer
         }
 
+        //update customer data
         fun update(context: Context, customer:CustomerModel) {
             phoneStoreDatabase = getDB(context)
 
@@ -53,7 +55,7 @@ class CustomerRepository {
             }
 
         }
-
+        //check customer login credentials
         fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
             phoneStoreDatabase = getDB(context)
 

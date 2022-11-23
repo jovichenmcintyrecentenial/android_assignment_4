@@ -29,6 +29,9 @@ class ProductRepository {
             MutableLiveData<List<ProductModel>>()
         }
 
+        //the main purpose of this function is to add product data to database
+        //if the function detect that there is product data in database already it won't
+        //insert the data again
         fun initialProductData(context:Context) {
             phoneStoreDatabase = getDB(context)
             //populate list of stuff if not populated already
@@ -65,7 +68,7 @@ class ProductRepository {
         private fun getDB(context: Context) : PhoneStoreDatabase {
             return PhoneStoreDatabase.getDatabaseClient(context)
         }
-
+        //get all product from database
         fun getAllProducts(context: Context):List<ProductModel>? {
 
             phoneStoreDatabase = getDB(context)
@@ -76,15 +79,6 @@ class ProductRepository {
 
             return listOfProducts
 
-        }
-
-        fun passwordCheck(context: Context, username: String, password:String):CustomerModel? {
-            phoneStoreDatabase = getDB(context)
-
-            var customer = phoneStoreDatabase!!.phonestoreDao().passwordCheck(username, password)
-//            loginCustomer.postValue(customer)
-
-            return customer
         }
 
     }

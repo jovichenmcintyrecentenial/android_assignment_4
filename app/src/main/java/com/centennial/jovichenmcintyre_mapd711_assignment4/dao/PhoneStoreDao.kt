@@ -40,7 +40,7 @@ interface PhoneStoreDao {
     @Query("SELECT * FROM products")
     fun getAllProducts() : List<ProductModel>?
 
-    // get order and product using join query
+    // get order and product using join query based on an customer id
     @Query("SELECT orders.*, products.* FROM orders INNER JOIN products ON products.productId = orders.prodId WHERE custId =:id")
     fun getMyOrders (id:Int) : List<ProductOrder>?
 

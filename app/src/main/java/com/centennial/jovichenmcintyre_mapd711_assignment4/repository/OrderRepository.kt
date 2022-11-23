@@ -22,7 +22,7 @@ class OrderRepository {
         private fun getDB(context: Context) : PhoneStoreDatabase {
             return PhoneStoreDatabase.getDatabaseClient(context)
         }
-
+        //function used to update and insert order data
         fun insertUpdateData(context: Context, orderModel: OrderModel) {
             phoneStoreDatabase = getDB(context)
 
@@ -31,7 +31,7 @@ class OrderRepository {
             }
 
         }
-
+        //get all order from customer with specified id
         fun getMyProductsOrders(context: Context, id: Int): List<ProductOrder>? {
 
             phoneStoreDatabase = getDB(context)
