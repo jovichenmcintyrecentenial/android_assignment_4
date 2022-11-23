@@ -8,15 +8,16 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.centennial.jovichenmcintyre_mapd711_assignment4.BottomNavigationActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.OrderModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.orders.OrdersViewModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.udpate_customer.UpdateCustumerViewModel
 import com.google.gson.Gson
+import java.util.*
 
 class OrderSummaryActivity : AppCompatActivity() {
 
@@ -42,6 +43,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         val cardType = findViewById<TextView>(R.id.card_type)
         val last4Digits = findViewById<TextView>(R.id.last_4_digits)
         val price = findViewById<TextView>(R.id.price)
+
 
         
         val userName = findViewById<TextView>(R.id.user_name)
@@ -75,11 +77,20 @@ class OrderSummaryActivity : AppCompatActivity() {
             findViewById<TableRow>(R.id.last_4_digits_row).visibility = View.GONE
             findViewById<TableRow>(R.id.card_type_row).visibility = View.GONE
 
+            val orderDate = findViewById<TextView>(R.id.order_date)
+            val orderDateRow = findViewById<TableRow>(R.id.order_date_row)
+
+            orderDateRow.visibility = View.VISIBLE
+            orderDate.text = Date(checkoutObj.orderModel!!.orderDate).toString()
             val titleTextView = findViewById<TextView>(R.id.title)
             titleTextView.text = "Order Details"
             supportActionBar?.title = "Order Details"
             val button = findViewById<Button>(R.id.login)
+
             button.text = "Cancel Order"
+            if(checkoutObj.orderModel!!.status != "Ordered"){
+                button.visibility = View.GONE
+            }
         }
         else{
 
@@ -88,7 +99,7 @@ class OrderSummaryActivity : AppCompatActivity() {
 
             updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
                 if(it != null){
-                    val unixTime = System.currentTimeMillis() / 1000L
+                    val unixTime = System.currentTimeMillis()
                     var order = OrderModel(it.id!!, checkoutObj.phone.id!!, "Ordered",unixTime)
                     orderViewModel.addOrder(this,order)
                 }
@@ -96,9 +107,6 @@ class OrderSummaryActivity : AppCompatActivity() {
             updateViewModel.getCustomer(this)
         }
 
-
-
-        
     }
 
     fun onComplete(view: View) {
@@ -106,8 +114,21 @@ class OrderSummaryActivity : AppCompatActivity() {
             if(checkoutObj.orderModel != null) {
 
                 checkoutObj.orderModel!!.status = "Cancelled"
+                var orderDate = Date(checkoutObj.orderModel!!.orderDate)
+                var nowDate = Date(System.currentTimeMillis())
 
-                orderViewModel.updateOrder(this, checkoutObj.orderModel!!)
+                //use the below link as reference
+                //https://stackoverflow.com/questions/2003521/find-total-hours-between-two-dates
+                var secs: Long = (nowDate.time - orderDate.time)/1000
+                val hours = (secs / 3600).toInt()
+                if(hours < 24) {
+                    orderViewModel.updateOrder(this, checkoutObj.orderModel!!)
+                    Toast.makeText(this,"Order Cancelled",Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                else{
+                    Toast.makeText(this,"You can only cancel an order within 24 hours",Toast.LENGTH_SHORT).show()
+                }
             }
         }
         else{

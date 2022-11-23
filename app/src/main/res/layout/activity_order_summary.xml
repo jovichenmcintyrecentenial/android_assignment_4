@@ -141,7 +141,18 @@
                         style="@style/information"
                         android:text="$1,250.00" />
                 </TableRow>
+                <TableRow android:id="@+id/order_date_row" android:layout_marginBottom="5dp" android:visibility="gone">
 
+                    <TextView
+                        style="@style/data_label"
+                        android:text="@string/order_date" />
+
+                    <TextView
+                        android:id="@+id/order_date"
+
+                        style="@style/information"
+                        android:text="$1,250.00" />
+                </TableRow>
             </TableLayout>
 
 
