@@ -24,10 +24,13 @@ import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
 
-    var ordersViewModel:OrdersViewModel? = null
-    var customerID: Int? = null
+    private var ordersViewModel:OrdersViewModel? = null
+    private var customerID: Int? = null
+
+    //list for adaptor so i can update it properly when livedata changes
     var list:MutableList<ProductOrder>? = null
 
+    //trigger get orders when back press to update status rendered on list view
     override fun onResume() {
         super.onResume()
         if(ordersViewModel!=null){
@@ -41,28 +44,39 @@ class OrdersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        //connect to view model
         ordersViewModel =
         ViewModelProvider(this).get(OrdersViewModel::class.java)
 
         var view = inflater.inflate(R.layout.fragment_orders, container, false)
+
+        //find listview
         var listView = view.findViewById<ListView>(R.id.list)
 
+        //nested live data observer to first get customer data to search order table for logined in used transaction
         ordersViewModel!!.liveCustomerData.observe(viewLifecycleOwner, Observer { customerModel ->
             customerID = customerModel!!.id
             if(customerModel != null){
+                //observer to update listview data with my list of orders
                 ordersViewModel!!.listOfOrdersLiveData.observe(viewLifecycleOwner,Observer{ listOfOrders ->
                     if(listOfOrders != null){
-
+                        //create list adaptor
                         var listAdaptor = activity?.let { activity ->
                             OrderListAdaptor(activity, listOfOrders, customerModel)
                         }
+
+                        //save list information in list and prevent it from overriding whenever this
+                        //observer trigger again so i can properly maintain the state of list view
+                        //so it can be refreshed when needed
                         if(list == null){
                             list = listOfOrders as MutableList<ProductOrder>?
                         }
-                        //attach adaptor to listview
+                        //attach adaptor to listview once
                         if(listView.adapter == null) {
                             listView.adapter = listAdaptor
                         }else{
+                            //on list update clear list and update with new information and notify
+                            //list view to invalidate data
                             list!!.clear()
                             list!!.addAll(listOfOrders)
                             listView.invalidate()
@@ -71,19 +85,30 @@ class OrdersFragment : Fragment() {
 
                     }
                 })
+                //get logined in customer's orders from order database
                 context?.let { ordersViewModel!!.getOrders(it,customerModel.id!!) }
             }
 
         })
+
+        //get customer data so observe can use id to pull order that are specific to this customer
         context?.let { ordersViewModel!!.getCustomer(it) }
+
         //create a listener for on click aciton on list view
+        //this on click listen take the click item in the list and convert it to a PhoneCheckout object
+        //this was done inorder to reuse the order summary page but it will now render as order details instead
         listView.setOnItemClickListener { parent, view, position, id ->
+
             var newIntent = Intent(activity, OrderSummaryActivity::class.java)
+            //get productOrder from list position
             var productOrder = ordersViewModel!!.listOfOrdersLiveData.value!![position]
+            //get customer data
             var customerModel = ordersViewModel!!.liveCustomerData.value!!
 
+            //create PhoneCheckOut base on product model
             var checkoutObj = PhoneCheckOut(productOrder.productModel!!)
 
+            //update remaining field with customer data so it render properly on order summary page
             checkoutObj.address = customerModel.address
             checkoutObj.city = customerModel.city
             checkoutObj.postalCode = customerModel.postal
@@ -92,6 +117,9 @@ class OrdersFragment : Fragment() {
             checkoutObj.lastName = customerModel.lastname
 
             checkoutObj.orderModel = productOrder.orderModel
+
+            //boolean that is use to indicate what state the order summary page should render
+            // either as Order Details or Order Summary
             checkoutObj.isOrderDetail = true
 
             //update create PhoneCheckOut and serialize data and pass to intent
@@ -102,13 +130,11 @@ class OrdersFragment : Fragment() {
         return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
     class OrderListAdaptor(context: Activity, list:List<ProductOrder>,customerModel: CustomerModel):  BaseAdapter(){
 
         var context = context
         var list = list
+        //save customer model to show address on list item
         var customerModel = customerModel
 
         override fun getCount(): Int {
@@ -163,4 +189,3 @@ class OrdersFragment : Fragment() {
 
 }
 
-//custom list adaptor to achieve design

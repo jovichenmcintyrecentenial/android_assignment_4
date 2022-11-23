@@ -11,12 +11,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class OrderViewModel: ViewModel() {
+    //function to add order model to database
     fun addOrder( context:Context,orderModel: OrderModel) {
         CoroutineScope(Dispatchers.IO).launch {
             OrderRepository.insertUpdateData(context, orderModel)
         }
     }
-
+    //function to update order in database
     fun updateOrder( context:Context,orderModel: OrderModel) {
         CoroutineScope(Dispatchers.IO).launch {
             OrderRepository.insertUpdateData(context, orderModel)

@@ -20,6 +20,7 @@ import java.util.*
 
 class CheckOutActivity : AppCompatActivity() {
 
+    //declare view varibles
     private lateinit var ccNumber: EditText
     private lateinit var  cvvNumber: EditText
     private lateinit var  expiryMonth: EditText
@@ -52,9 +53,11 @@ class CheckOutActivity : AppCompatActivity() {
 
         //update title
         supportActionBar?.title = "Checkout"
+
+        //connect to view model
         val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
-
+        //observe that uses customer data and pre fill edit texts feilds
         updateViewModel.liveCustomerData.observe(this, androidx.lifecycle.Observer {
             if(it != null){
                 fname.setText(it.firstname)
@@ -64,7 +67,7 @@ class CheckOutActivity : AppCompatActivity() {
                 postalCode.setText(it.postal)
             }
         })
-
+        //get customer data from database using view model
         updateViewModel.getCustomer(this)
 
 
