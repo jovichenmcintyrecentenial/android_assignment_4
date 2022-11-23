@@ -11,6 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RegisterViewModel: ViewModel() {
+
+    //insert user data to database
     fun insertCustomerData( context:Context,customerModel: CustomerModel) {
         CoroutineScope(Dispatchers.IO).launch {
             CustomerRepository.insertData(context, customerModel)

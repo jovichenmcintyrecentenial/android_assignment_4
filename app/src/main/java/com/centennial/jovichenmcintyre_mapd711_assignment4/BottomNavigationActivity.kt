@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 
 class BottomNavigationActivity : AppCompatActivity() {
 
-
+    //acitvity for bottom navigation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

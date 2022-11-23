@@ -9,6 +9,8 @@ import android.widget.Toast
 
 class Utils {
     companion object {
+
+        //check if edittext is empty or not
         fun emptyValidation(edittext: EditText, error: String): Boolean {
             if (edittext.text.trim().isEmpty()) {
                 throw UserInputException(error)

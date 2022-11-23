@@ -30,15 +30,22 @@ class ProductsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        //connect to view model
         val productsViewModel =
             ViewModelProvider(this).get(modelClass = ProductsViewModel::class.java)
 
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        //get share prefence instants to display user name on screen
         val sharedPreference =  this.requireContext().getSharedPreferences("STORE", Context.MODE_PRIVATE)
+
         var username = sharedPreference.getString("username","")
         val welcome: TextView = view.findViewById(R.id.welcome)
+
+        //display user name on screen
         welcome.text = "Welcome $username"
+
         //find list view
         var listView = view.findViewById<ListView>(R.id.list)
 
@@ -51,6 +58,7 @@ class ProductsFragment : Fragment() {
             startActivity(newIntent)
         }
 
+        //observer used to update list view with products
         activity?.let { productsViewModel.listOfProductLiveData.observe(it, Observer { listOfPhones ->
             if(listOfPhones != null) {
                 //create instance of a custom listAdpator called PhoneListAdaptor

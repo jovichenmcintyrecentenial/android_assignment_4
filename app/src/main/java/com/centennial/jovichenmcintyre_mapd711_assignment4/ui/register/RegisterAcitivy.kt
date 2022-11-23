@@ -17,6 +17,7 @@ class RegisterAcitivy : AppCompatActivity() {
 
     lateinit var registerViewModel: RegisterViewModel
 
+    //declare view varibles
     private lateinit var username: EditText
     private lateinit var  firstname: EditText
     private lateinit var  lastname: EditText
@@ -31,6 +32,7 @@ class RegisterAcitivy : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_acitivy)
 
+        //find views
         username = findViewById(R.id.uname)
         firstname = findViewById(R.id.firstname)
         lastname = findViewById(R.id.lastname)
@@ -40,9 +42,8 @@ class RegisterAcitivy : AppCompatActivity() {
         password = findViewById(R.id.password1)
         rePassword = findViewById(R.id.password2)
 
+        //connect to view model
         registerViewModel = ViewModelProvider(this).get(modelClass = RegisterViewModel::class.java)
-
-
     }
 
     //validate edit text information if there is an issue throw an exception
@@ -56,6 +57,7 @@ class RegisterAcitivy : AppCompatActivity() {
         Utils.emptyValidation(password,"Please enter a password")
         Utils.emptyValidation(rePassword,"Please re-enter password")
 
+        //password check if match
         if(rePassword.text.toString() != password.text.toString()){
             throw UserInputException("Password doesn't match, please try again.")
         }
@@ -69,6 +71,7 @@ class RegisterAcitivy : AppCompatActivity() {
         try{
             if(isDataValid()){
 
+                //store edittext values in string varibles
                 val username = this.username.text.toString()
                 val firstname = this.firstname.text.toString()
                 val lastname = this.lastname.text.toString()
@@ -77,8 +80,12 @@ class RegisterAcitivy : AppCompatActivity() {
                 val postalCode = this.postalCode.text.toString()
                 val password = this.password.text.toString()
 
+                //create new customer model
                 val customerModel = CustomerModel(username,firstname,lastname,address,city,postalCode,password)
+                //use view model to insert data in database
                 registerViewModel.insertCustomerData(this,customerModel)
+
+                //display success and pop screen
                 Toast.makeText(this,"Registration successful",Toast.LENGTH_LONG).show()
                 finish()
 

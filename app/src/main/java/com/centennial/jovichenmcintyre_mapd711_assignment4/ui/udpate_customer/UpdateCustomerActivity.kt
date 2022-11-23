@@ -19,7 +19,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
 
     lateinit var updateViewModel: UpdateCustumerViewModel
 
-
+    //declare view varibles
     private lateinit var username: EditText
     private lateinit var  firstname: EditText
     private lateinit var  lastname: EditText
@@ -33,6 +33,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_acitivy)
 
+        //find views
         username = findViewById(R.id.uname)
         firstname = findViewById(R.id.firstname)
         lastname = findViewById(R.id.lastname)
@@ -41,8 +42,10 @@ class UpdateCustomerActivity : AppCompatActivity() {
         postalCode = findViewById(R.id.postal)
         password = findViewById(R.id.password1)
         rePassword = findViewById(R.id.password2)
-        var button = findViewById<Button>(R.id.register)
+        val button = findViewById<Button>(R.id.register)
 
+        //hide view unnecessary views for registration xml because xml is reuse
+        // for update profile activity
         findViewById<TextView>(R.id.uname_label).visibility = View.GONE
         findViewById<TextView>(R.id.fname_label).visibility = View.GONE
         findViewById<TextView>(R.id.lname_label).visibility = View.GONE
@@ -50,10 +53,13 @@ class UpdateCustomerActivity : AppCompatActivity() {
         firstname.visibility = View.GONE
         lastname.visibility = View.GONE
 
-        button.text = "Update"
+        //change button title
+        button.text = getString(R.string.update)
 
+        //connect to view model
         updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
+        //object live data to pre fill edittext field with current customer data
         updateViewModel.liveCustomerData.observe(this, Observer {
 
             if(it != null) {
@@ -65,6 +71,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
 
         })
 
+        //trigger get customer
         updateViewModel.getCustomer(this)
 
         button.setOnClickListener {
@@ -76,23 +83,28 @@ class UpdateCustomerActivity : AppCompatActivity() {
     private fun onSubmit() {
         try{
             if(isDataValid()){
-
+                //save data in string varibles
                 val address = this.address.text.toString()
                 val city = this.city.text.toString()
                 val postalCode = this.postalCode.text.toString()
                 val password = this.password.text.toString()
 
+                //update live data model information to data user entered
                 updateViewModel.liveCustomerData.value!!.address = address
                 updateViewModel.liveCustomerData.value!!.city = city
                 updateViewModel.liveCustomerData.value!!.postal = postalCode
                 updateViewModel.liveCustomerData.value!!.city = city
 
+                //if password was edited update model data for password other wise ignore
                 if(rePassword.text.toString().isNotEmpty() || this.password.text.toString().isNotEmpty() ) {
                     updateViewModel.liveCustomerData.value!!.password = password
                 }
 
+                //trigger customer data update
                 updateViewModel.updateCustomer(this)
 
+
+                //display success and pop
                 Toast.makeText(this,"Update successful", Toast.LENGTH_LONG).show()
                 finish()
 
@@ -112,11 +124,13 @@ class UpdateCustomerActivity : AppCompatActivity() {
         Utils.emptyValidation(city,"Please enter a city")
         Utils.emptyValidation(postalCode,"Please enter a postalCode")
 
+        //if password was enter in either fields do password validation else if not just ignore password fields
         if(rePassword.text.toString().isNotEmpty() || password.text.toString().isNotEmpty() ) {
 
             Utils.emptyValidation(password,"Please enter a password")
             Utils.emptyValidation(rePassword,"Please re-enter password")
 
+            //check if password match
             if (rePassword.text.toString() != password.text.toString()) {
                 throw UserInputException("Password doesn't match, please try again.")
             }

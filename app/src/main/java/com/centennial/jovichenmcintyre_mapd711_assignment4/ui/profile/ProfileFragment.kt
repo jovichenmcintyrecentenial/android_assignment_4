@@ -27,17 +27,23 @@ class ProfileFragment : Fragment() {
     ): View {
 
         var view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        //find views
         var imageButton = view.findViewById<ImageButton>(R.id.imageButton)
 
+        //click listener to navigate to update profile activity
         imageButton.setOnClickListener {
 
             startActivity(Intent(activity,UpdateCustomerActivity::class.java))
         }
-
+        //connect to view model
         val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)
 
+        //find views
         val username = view.findViewById<TextView>(R.id.uname)
         val name = view.findViewById<TextView>(R.id.name)
+
+        //obeserve that update view when get customer name and email and display on profile UI
         updateViewModel.liveCustomerData.observe(viewLifecycleOwner, Observer {
 
             if(it != null) {
@@ -46,6 +52,7 @@ class ProfileFragment : Fragment() {
             }
 
         })
+        //trigger get cusomter data
         activity?.let { updateViewModel.getCustomer(it) }
         return view
 

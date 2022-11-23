@@ -99,5 +99,6 @@
     <string name="color_phone">Color: </string>
     <string name="review_your_orders_here">Review your orders here</string>
     <string name="order_date">Order Date</string>
+    <string name="update">Update</string>
 
 </resources>
