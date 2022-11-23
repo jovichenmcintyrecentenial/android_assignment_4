@@ -93,8 +93,8 @@ class OrderSummaryActivity : AppCompatActivity() {
             orderDate.text = Date(checkoutObj.orderModel!!.orderDate).toString()
 
             //change titles to order details
-            titleTextView.text = "Order Details"
-            supportActionBar?.title = "Order Details"
+            titleTextView.text = getString(R.string.order_details)
+            supportActionBar?.title = getString(R.string.order_details)
 
             //update button to say cancel or on order details state
             button.text = "Cancel Order"
@@ -152,11 +152,11 @@ class OrderSummaryActivity : AppCompatActivity() {
                     //update order model with cancelled status in database
                     orderViewModel.updateOrder(this, checkoutObj.orderModel!!)
 
-                    Toast.makeText(this,"Order Cancelled",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.order_cancelled),Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 else{
-                    Toast.makeText(this,"You can only cancel an order within 24 hours",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.error_cant_cancel),Toast.LENGTH_SHORT).show()
                 }
             }
         }

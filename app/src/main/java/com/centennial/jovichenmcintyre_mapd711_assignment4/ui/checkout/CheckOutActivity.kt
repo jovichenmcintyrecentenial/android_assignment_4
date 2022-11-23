@@ -52,7 +52,7 @@ class CheckOutActivity : AppCompatActivity() {
          postalCode = findViewById(R.id.postal_code)
 
         //update title
-        supportActionBar?.title = "Checkout"
+        supportActionBar?.title = getString(R.string.checkout)
 
         //connect to view model
         val updateViewModel = ViewModelProvider(this).get(modelClass = UpdateCustumerViewModel::class.java)

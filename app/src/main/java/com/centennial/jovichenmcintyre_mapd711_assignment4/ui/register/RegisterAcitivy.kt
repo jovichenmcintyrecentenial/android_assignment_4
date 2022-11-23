@@ -86,7 +86,7 @@ class RegisterAcitivy : AppCompatActivity() {
                 registerViewModel.insertCustomerData(this,customerModel)
 
                 //display success and pop screen
-                Toast.makeText(this,"Registration successful",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.success_reg),Toast.LENGTH_LONG).show()
                 finish()
 
             }

@@ -105,7 +105,7 @@ class UpdateCustomerActivity : AppCompatActivity() {
 
 
                 //display success and pop
-                Toast.makeText(this,"Update successful", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.update_success), Toast.LENGTH_LONG).show()
                 finish()
 
 
@@ -120,19 +120,19 @@ class UpdateCustomerActivity : AppCompatActivity() {
 
     //validate edit text information if there is an issue throw an exception
     private fun isDataValid(): Boolean {
-        Utils.emptyValidation(address,"Please enter a address")
-        Utils.emptyValidation(city,"Please enter a city")
-        Utils.emptyValidation(postalCode,"Please enter a postalCode")
+        Utils.emptyValidation(address,getString(R.string.enter_address))
+        Utils.emptyValidation(city,getString(R.string.enter_city))
+        Utils.emptyValidation(postalCode,getString(R.string.enter_postal))
 
         //if password was enter in either fields do password validation else if not just ignore password fields
         if(rePassword.text.toString().isNotEmpty() || password.text.toString().isNotEmpty() ) {
 
-            Utils.emptyValidation(password,"Please enter a password")
-            Utils.emptyValidation(rePassword,"Please re-enter password")
+            Utils.emptyValidation(password,getString(R.string.enter_password))
+            Utils.emptyValidation(rePassword,getString(R.string.enter_re_password))
 
             //check if password match
             if (rePassword.text.toString() != password.text.toString()) {
-                throw UserInputException("Password doesn't match, please try again.")
+                throw UserInputException(getString(R.string.password_not_match))
             }
         }
 

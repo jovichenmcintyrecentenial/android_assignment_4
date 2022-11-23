@@ -21,7 +21,7 @@ class ProductReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_review)
         //set title
-        supportActionBar?.title = "Product Review"
+        supportActionBar?.title = getString(R.string.product_review)
 
 
         //deserialize PhoneCheckOut in varible checkoutObj

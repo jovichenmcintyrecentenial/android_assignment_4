@@ -44,7 +44,7 @@ class ProductsFragment : Fragment() {
         val welcome: TextView = view.findViewById(R.id.welcome)
 
         //display user name on screen
-        welcome.text = "Welcome $username"
+        welcome.text = getString(R.string.welcome)+" "+username
 
         //find list view
         var listView = view.findViewById<ListView>(R.id.list)
