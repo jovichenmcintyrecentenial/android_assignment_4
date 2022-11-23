@@ -1,4 +1,6 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.database
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
 import android.content.Context
 import androidx.room.*

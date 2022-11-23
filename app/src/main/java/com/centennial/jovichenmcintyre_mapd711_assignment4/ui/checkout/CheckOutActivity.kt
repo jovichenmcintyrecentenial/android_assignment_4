@@ -1,6 +1,8 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.checkout
 //Name: Jovi Chen-Mcintyre
 //ID: 301125059
+import CardType
+import UserInputException
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +11,6 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.centennial.jovichenmcintyre_mapd711_001_assignment2.enumerators.CardType
-import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity

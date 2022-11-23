@@ -1,12 +1,14 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.register
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
+import UserInputException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.utils.Utils

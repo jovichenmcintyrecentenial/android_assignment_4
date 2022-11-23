@@ -1,4 +1,6 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

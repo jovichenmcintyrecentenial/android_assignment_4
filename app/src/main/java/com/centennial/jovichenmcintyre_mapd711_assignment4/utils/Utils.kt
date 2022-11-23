@@ -1,9 +1,11 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.utils
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
+import UserInputException
 import android.content.Context
 import android.widget.EditText
 import android.widget.Toast
-import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 
 class Utils {
     companion object {

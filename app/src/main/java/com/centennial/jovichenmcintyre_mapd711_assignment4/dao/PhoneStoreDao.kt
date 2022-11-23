@@ -1,4 +1,6 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.dao
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

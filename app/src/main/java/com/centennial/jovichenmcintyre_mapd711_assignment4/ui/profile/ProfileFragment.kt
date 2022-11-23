@@ -1,4 +1,6 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.profile
+//Name: Jovi Chen-Mcintyre
+//ID: 301125059
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,5 +1,6 @@
 package com.centennial.jovichenmcintyre_mapd711_assignment4.ui.login
 
+import UserInputException
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.centennial.jovichenmcintyre_mapd711_001_assignment2.exceptions.UserInputException
 import com.centennial.jovichenmcintyre_mapd711_assignment4.BottomNavigationActivity
 import com.centennial.jovichenmcintyre_mapd711_assignment4.R
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.register.RegisterAcitivy
