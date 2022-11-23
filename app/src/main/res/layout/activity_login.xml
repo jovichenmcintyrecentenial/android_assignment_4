@@ -27,30 +27,30 @@
 
     <TextView
         style="@style/checkout_text_view_style"
-        android:text="Email" />
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/uname"
         style="@style/edit_text"
         android:autofillHints=""
-        android:hint="Enter email here"
+        android:hint="@string/enter_email_here"
         android:inputType="textPersonName" />
 
     <TextView
         style="@style/checkout_text_view_style"
-        android:text="Password" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/password"
         style="@style/edit_text"
         android:autofillHints=""
         android:inputType="textPassword"
-        android:hint="Enter password here"
+        android:hint="@string/enter_password_here"
         />
 
     <Button
         android:id="@+id/login"
-        android:text="Login"
+        android:text="@string/login"
         android:onClick="onLogin"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/don_t_an_account"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="@dimen/space"/>
 
             <TextView
                 android:layout_width="wrap_content"

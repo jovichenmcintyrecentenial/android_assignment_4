@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

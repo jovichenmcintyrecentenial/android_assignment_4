@@ -104,7 +104,7 @@
     <string name="order_cancelled">Order Cancelled</string>
     <string name="error_cant_cancel">You can only cancel an order within 24 hours</string>
     <string name="product_review">Product Review</string>
-    <string name="welcome">\"Welcome \"</string>
+    <string name="welcome">Welcome </string>
     <string name="success_reg">Registration successful</string>
     <string name="update_success">Update successful</string>
     <string name="enter_address">Please enter a address</string>
@@ -113,5 +113,13 @@
     <string name="enter_password">Please enter a password</string>
     <string name="enter_re_password">Please re-enter password</string>
     <string name="password_not_match">Password doesn\'t match, please try again.</string>
+    <string name="email">Email</string>
+    <string name="enter_email_here">Enter email here</string>
+    <string name="password">Password</string>
+    <string name="enter_password_here">Enter password here</string>
+    <string name="login">Login</string>
+    <string name="review_your_device">Review your device</string>
+    <string name="order">Order</string>
+    <string name="first_lastname">First Lastname</string>
 
 </resources>
