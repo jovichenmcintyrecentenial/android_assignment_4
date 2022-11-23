@@ -18,7 +18,6 @@ import com.centennial.jovichenmcintyre_mapd711_assignment4.models.CustomerModel
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.PhoneCheckOut
 import com.centennial.jovichenmcintyre_mapd711_assignment4.models.ProductOrder
 import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderSummaryActivity
-import com.centennial.jovichenmcintyre_mapd711_assignment4.ui.order_summary.OrderViewModel
 import com.google.gson.Gson
 
 class OrdersFragment : Fragment() {
@@ -43,7 +42,7 @@ class OrdersFragment : Fragment() {
         ordersViewModel =
         ViewModelProvider(this).get(OrdersViewModel::class.java)
 
-        var view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        var view = inflater.inflate(R.layout.fragment_orders, container, false)
         var listView = view.findViewById<ListView>(R.id.list)
 
         ordersViewModel!!.liveCustomerData.observe(viewLifecycleOwner, Observer { customerModel ->
